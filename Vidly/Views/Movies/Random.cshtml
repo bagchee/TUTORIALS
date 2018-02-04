@@ -1,0 +1,36 @@
+﻿@model Vidly.ViewModels.RandomMovieViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*
+    
+Dynamically assigning class attribute. First, create some logic to
+    put "popular" into the classname and then use it in the tag format
+*@
+
+
+@{ 
+    var classname = Model.Customers.Count > 1 ? "popular" : null;
+}
+
+<h2 class="@classname">@Model.movie.Name</h2>
+<hr />
+<h2 color="#f00">Renters</h2>
+
+@if (Model.Customers.Count == 0)
+{
+    <text>Nobody has rented this movie yet</text>
+}
+else
+{
+    <ul>
+
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@customer.Name</li>
+        }
+
+    </ul>
+}

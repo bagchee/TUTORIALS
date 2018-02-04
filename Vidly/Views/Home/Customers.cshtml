@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Customers";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+Dynamically assigning class attribute. First, create some logic to
+    put "popular" into the classname and then use it in the tag format
+*@
+
+
+@{
+    var classname = Model.Customers.Count > 1 ? "popular" : null;
+}
+
+<h2 class="@classname">@Model.movie.Name</h2>
+<hr />
+<h2 color="#f00">Renters</h2>
+
+@if (Model.Customers.Count == 0)
+{
+    <text>Nobody has rented this movie yet</text>
+}
+else
+{
+    <ul>
+
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@customer.Name</li>
+        }
+
+    </ul>
+
+    <address>
+        One Microsoft Way<br />
+        Redmond, WA 98052-6399<br />
+        <abbr title="Phone">P:</abbr>
+        425.555.0100
+    </address>
+
+    <address>
+        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>
